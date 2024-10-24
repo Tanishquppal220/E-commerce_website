@@ -1,0 +1,122 @@
+:root {
+	--primary-color: #131350;
+	--secondary-color: rgb(200, 193, 193);
+	--container-bg: rgb(219, 218, 218);
+	--text-color: #677485;
+	--highlight-color: #0091ff;
+	--button-bg: #40baee48;
+	--card-height: 25em;
+	/* New variable for card height */
+}
+
+/* Nav bar  */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	background-color: #7ab2d3;
+}
+header {
+	background-color: #dff2eb;
+	/* padding: 10px; */
+	display: flex;
+	height: fit-content;
+}
+
+nav {
+	padding: 10px;
+}
+
+nav ul {
+	list-style: none;
+	display: flex;
+}
+nav ul li a {
+	font-size: 1rem;
+	text-decoration: none;
+	color: #4a628a;
+	padding: 10px;
+}
+nav ul li a:hover {
+	font-size: 1.2rem;
+}
+#Cart {
+	position: absolute;
+	left: 95%;
+}
+/* image should be center of nav bar */
+.img_box {
+	position: relative;
+	left: 25%;
+	width: 150px;
+	height: 40px;
+}
+img {
+	width: 100%;
+	height: 100%;
+}
+
+/* title */
+.home {
+	text-align: center;
+	margin-top: 100px;
+}
+
+/* Product card */
+.products {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+	margin: 30px 20px;
+}
+
+.container {
+	margin: auto;
+	padding: 10px;
+	background-color: var(--container-bg);
+	height: var(--card-height);
+	/* Use the new variable here */
+	width: 20em;
+	border-radius: 23px;
+}
+
+.pic {
+	margin-bottom: 10px;
+	height: 40%;
+	width: 100%;
+	border-radius: 12px;
+}
+
+.list-item {
+	padding: 4px;
+	font-size: 10px;
+	display: inline-block;
+	color: rgb(125, 116, 116);
+	border: 0.5px solid grey;
+	border-radius: 8px;
+}
+
+.title {
+	font-size: 1.5rem;
+	font-weight: 400;
+	color: var(--primary-color);
+	margin: 10px;
+}
+
+.products p {
+	color: var(--text-color);
+	margin: 10px;
+}
+
+.read {
+	padding: 15px;
+	border: 2px;
+	border-radius: 24px;
+	background-color: var(--button-bg);
+	color: var(--highlight-color);
+	position: relative;
+	font-weight: bold;
+	left: 35%;
+}
