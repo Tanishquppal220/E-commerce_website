@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        h1 {
+            text-align: center;
+        }
+
         .cart-item {
             display: flex;
             align-items: center;
@@ -14,15 +19,18 @@
             border: 1px solid #ccc;
             height: 300px;
         }
+
         .cart-item img {
             width: 100px;
             height: 100px;
             object-fit: cover;
             margin-right: 20px;
         }
+
         .cart-item .title {
             flex-grow: 1;
         }
+
         .cart-item .remove-btn {
             padding: 10px 20px;
             background-color: red;
@@ -31,14 +39,41 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+        .cart-item .price-details {
+            margin-left: auto;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        .cart-item .price-details .msrp {
+            text-decoration: line-through;
+            color: red;
+        }
+
+        .cart-item .price-details .offer-price {
+            color: green;
+            font-weight: bold;
+        }
+
+        .cart-item .price-details .discount {
+            color: blue;
+        }
+
+        .total-amount {
+            text-align: right;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 20px;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
             <ul>
                 <li><a href="home.html">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li id="Cart"><a href="cart.html">Cart</a></li>
@@ -51,24 +86,39 @@
     <main>
         <section class="cart">
             <h1>Your Cart</h1>
-            <div id="cart-items"><div id="cart-container"></div></div>
+            <div id="cart-items">
+                <div id="cart-container"></div>
+            </div>
+            <div id="total-amount" class="total-amount"></div>
         </section>
     </main>
     <script>
         function loadCart() {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             let cartItemsContainer = document.getElementById('cart-items');
+            let totalAmountContainer = document.getElementById('total-amount');
             cartItemsContainer.innerHTML = '';
+            let totalAmount = 0;
+
             cart.forEach((item, index) => {
                 let itemDiv = document.createElement('div');
                 itemDiv.classList.add('cart-item');
                 itemDiv.innerHTML = `
                     <img src="${item.imageUrl}" alt="${item.title}" class="pic">
                     <div class="title">${item.title}</div>
+                    <div class="price-details">
+                        <div class="msrp">MSRP: ₹${item.msrp}</div>
+                        <div class="offer-price">Price: ₹${item.price}</div>
+                        <div class="discount">Discount: ${item.discount}%</div>
+                        <div class="quantity">Quantity: ${item.quantity}</div>
+                    </div>
                     <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
                 `;
                 cartItemsContainer.appendChild(itemDiv);
+                totalAmount += item.price * item.quantity;
             });
+
+            totalAmountContainer.innerHTML = `Total Amount: ₹${totalAmount}`;
         }
 
         function removeFromCart(index) {
@@ -79,16 +129,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', loadCart);
-        document.addEventListener('DOMContentLoaded', function () {
-                const cart = JSON.parse(localStorage.getItem('cart')) || [];
-                const cartContainer = document.getElementById('cart-container');
-
-                cart.forEach(productId => {
-                    const productElement = document.createElement('div');
-                    productElement.textContent = `Product ID: ${productId}`;
-                    cartContainer.appendChild(productElement);
-                });
-            })
     </script>
 </body>
+
 </html>

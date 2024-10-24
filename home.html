@@ -24,7 +24,7 @@
         <nav>
             <ul>
                 <li><a href="home.html">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
+
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li id="Cart"><a href="cart.html">Cart</a></li>
@@ -52,8 +52,7 @@
                 <div class="title">Tennis Racket</div>
                 <p>High-quality tennis racket for professional players. Lightweight and durable.</p>
                 <!-- add to cart button -->
-                <button class="read" onclick="addToCart('Tennis Racket', 'image/tennis_racket.png', 7500, 10)">Add to
-                    Cart</button>
+                <button class="read" onclick="addToCart('Tennis Racket', 'image/tennis_racket.png', 7500, 8500, 10, 1)">Add to Cart</button>
             </div>
             <div class="container">
                 <img src="image/football.png" alt="Football" class="pic">
@@ -67,7 +66,7 @@
                 <div class="title">Football</div>
                 <p>Official size and weight football. Perfect for matches and training.</p>
                 <!-- add to cart button -->
-                <button class="read" onclick="addToCart('Football', 'image/football.png', 3500, 5)">Add to Cart</button>
+                <button class="read" onclick="addToCart('Football', 'image/football.png', 3500, 4000, 5, 1)">Add to Cart</button>
             </div>
             <div class="container">
                 <img src="image/basketball.png" alt="Basketball" class="pic">
@@ -81,8 +80,7 @@
                 <div class="title">Basketball</div>
                 <p>Durable basketball for indoor and outdoor play. Excellent grip and control.</p>
                 <!-- add to cart button -->
-                <button class="read" onclick="addToCart('Basketball', 'image/basketball.png', 4500, 15)">Add to
-                    Cart</button>
+                <button class="read" onclick="addToCart('Basketball', 'image/basketball.png', 4500, 5000, 15, 1)">Add to Cart</button>
             </div>
             <div class="container">
                 <img src="image/cricket_bat.png" alt="Cricket Bat" class="pic">
@@ -96,15 +94,21 @@
                 <div class="title">Cricket Bat</div>
                 <p>Professional grade cricket bat. Made from high-quality willow for superior performance.</p>
                 <!-- add to cart button -->
-                <button class="read" onclick="addToCart('Cricket Bat', 'image/cricket_bat.png', 9000, 20)">Add to
-                    Cart</button>
+                <button class="read" onclick="addToCart('Cricket Bat', 'image/cricket_bat.png', 9000, 11000, 20, 1)">Add to Cart</button>
             </div>
         </section>
     </main>
     <script>
-        function addToCart(title, imageUrl, price, discount) {
+        function addToCart(title, imageUrl, price, msrp, discount, quantity = 1) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push({ title, imageUrl, price, discount });
+            let itemIndex = cart.findIndex(item => item.title === title);
+
+            if (itemIndex !== -1) {
+                cart[itemIndex].quantity += quantity;
+            } else {
+                cart.push({ title, imageUrl, price, msrp, discount, quantity });
+            }
+
             localStorage.setItem('cart', JSON.stringify(cart));
             alert('Item added to cart!');
         }
