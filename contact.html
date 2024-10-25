@@ -4,8 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce Website</title>
+    <title>Contact Us - E-commerce Website</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .contact-section h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: darkgreen;
+        }
+    </style>
 </head>
 
 <body>
@@ -13,7 +58,6 @@
         <nav>
             <ul>
                 <li><a href="home.html">Home</a></li>
-
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li id="Cart"><a href="cart.html">Cart</a></li>
@@ -23,6 +67,26 @@
             <img src="image/logo.png" alt="logo">
         </div>
     </header>
+    <main>
+        <section class="contact-section">
+            <h1>Contact Us</h1>
+            <form class="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
 </body>
 
 </html>

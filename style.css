@@ -49,7 +49,7 @@ nav ul li a:hover {
 /* image should be center of nav bar */
 .img_box {
 	position: relative;
-	left: 25%;
+	left: 30%;
 	width: 150px;
 	height: 40px;
 }

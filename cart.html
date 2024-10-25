@@ -66,6 +66,18 @@
             font-weight: bold;
             margin: 20px;
         }
+
+        .checkout-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -90,6 +102,7 @@
                 <div id="cart-container"></div>
             </div>
             <div id="total-amount" class="total-amount"></div>
+            <button class="checkout-btn" onclick="checkout()">Checkout</button>
         </section>
     </main>
     <script>
@@ -126,6 +139,13 @@
             cart.splice(index, 1);
             localStorage.setItem('cart', JSON.stringify(cart));
             loadCart();
+        }
+
+        function checkout() {
+            alert('Proceeding to checkout');
+            localStorage.removeItem('cart');
+            loadCart();
+            // Add your checkout logic here
         }
 
         document.addEventListener('DOMContentLoaded', loadCart);
