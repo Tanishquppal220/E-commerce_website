@@ -105,50 +105,8 @@
             <button class="checkout-btn" onclick="checkout()">Checkout</button>
         </section>
     </main>
-    <script>
-        function loadCart() {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            let cartItemsContainer = document.getElementById('cart-items');
-            let totalAmountContainer = document.getElementById('total-amount');
-            cartItemsContainer.innerHTML = '';
-            let totalAmount = 0;
-
-            cart.forEach((item, index) => {
-                let itemDiv = document.createElement('div');
-                itemDiv.classList.add('cart-item');
-                itemDiv.innerHTML = `
-                    <img src="${item.imageUrl}" alt="${item.title}" class="pic">
-                    <div class="title">${item.title}</div>
-                    <div class="price-details">
-                        <div class="msrp">MSRP: ₹${item.msrp}</div>
-                        <div class="offer-price">Price: ₹${item.price}</div>
-                        <div class="discount">Discount: ${item.discount}%</div>
-                        <div class="quantity">Quantity: ${item.quantity}</div>
-                    </div>
-                    <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
-                `;
-                cartItemsContainer.appendChild(itemDiv);
-                totalAmount += item.price * item.quantity;
-            });
-
-            totalAmountContainer.innerHTML = `Total Amount: ₹${totalAmount}`;
-        }
-
-        function removeFromCart(index) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.splice(index, 1);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            loadCart();
-        }
-
-        function checkout() {
-            alert('Proceeding to checkout');
-            localStorage.removeItem('cart');
-            loadCart();
-            // Add your checkout logic here
-        }
-
-        document.addEventListener('DOMContentLoaded', loadCart);
+    <script src="Script.js">
+        document.addEventListener("DOMContentLoaded", loadCart);
     </script>
 </body>
 
