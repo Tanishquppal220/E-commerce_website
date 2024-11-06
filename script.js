@@ -8,6 +8,7 @@ const products = [
 		discount: 10,
 		description:
 			"High-quality tennis racket for professional players. Lightweight and durable.",
+		rating: 4.5
 	},
 	{
 		title: "Football",
@@ -18,6 +19,7 @@ const products = [
 		discount: 5,
 		description:
 			"Official size and weight football. Perfect for matches and training.",
+		rating: 4.0
 	},
 	{
 		title: "Basketball",
@@ -28,6 +30,7 @@ const products = [
 		discount: 15,
 		description:
 			"Durable basketball for indoor and outdoor play. Excellent grip and control.",
+		rating: 3.2
 	},
 	{
 		title: "Cricket Bat",
@@ -38,6 +41,7 @@ const products = [
 		discount: 20,
 		description:
 			"Professional grade cricket bat. Made from high-quality willow for superior performance.",
+		rating: 4.8
 	},
 	{
 		title: "Volleyball",
@@ -48,6 +52,7 @@ const products = [
 		discount: 17,
 		description:
 			"High-quality volleyball for professional and recreational play. Durable and lightweight.",
+		rating: 4.1
 	},
 	{
 		title: "Baseball Glove",
@@ -58,6 +63,7 @@ const products = [
 		discount: 17,
 		description:
 			"Professional-grade baseball glove. Made from high-quality leather for superior performance.",
+		rating: 4.3
 	},
 	{
 		title: "Hockey Stick",
@@ -68,6 +74,7 @@ const products = [
 		discount: 14,
 		description:
 			"High-performance hockey stick for professional players. Lightweight and durable.",
+		rating: 4.6
 	},
 	{
 		title: "Golf Club",
@@ -78,6 +85,7 @@ const products = [
 		discount: 13,
 		description:
 			"Premium golf club for professional golfers. Made from high-quality materials for superior performance.",
+		rating: 4.7
 	},
 ];
 
@@ -100,6 +108,7 @@ function createProductHTML(product) {
     const titleParts = product.title.split(' ');
     const firstTag = titleParts[0];
     const secondTag = titleParts[1] || '';
+    const ratingStars = Array.from({ length: 5 }, (_, i) => i < Math.floor(product.rating) ? '★' : '☆').join('');
     return `
         <img src="${product.imageUrl}" alt="${product.title}" class="pic">
         <div class="tags">
@@ -111,6 +120,7 @@ function createProductHTML(product) {
         </div>
         <div class="title">${product.title}</div>
         <p>${product.description}</p>
+        <div class="rating">${ratingStars}</div>
         <input type="number" min="1" value="1" id="quantity-${product.title.replace(/\s+/g, '-')}">
         <button class="read" onclick="addToCart('${product.title}', '${product.imageUrl}', ${product.price}, ${product.msrp}, ${product.discount}, parseInt(document.getElementById('quantity-${product.title.replace(/\s+/g, '-')}').value))">Add to Cart</button>
     `;
