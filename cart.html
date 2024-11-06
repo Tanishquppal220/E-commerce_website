@@ -4,105 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart</title>
+    <title>Cart 🛒</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        h1 {
-            text-align: center;
-        }
-
-        .cart-item {
-            display: flex;
-            align-items: center;
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            height: 300px;
-        }
-
-        .cart-item img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            margin-right: 20px;
-        }
-
-        .cart-item .title {
-            flex-grow: 1;
-        }
-
-        .cart-item .remove-btn {
-            padding: 10px 20px;
-            background-color: red;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .cart-item .price-details {
-            margin-left: auto;
-            text-align: right;
-            margin-right: 10px;
-        }
-
-        .cart-item .price-details .msrp {
-            text-decoration: line-through;
-            color: red;
-        }
-
-        .cart-item .price-details .offer-price {
-            color: green;
-            font-weight: bold;
-        }
-
-        .cart-item .price-details .discount {
-            color: blue;
-        }
-
-        .total-amount {
-            text-align: right;
-            font-size: 1.5em;
-            font-weight: bold;
-            margin: 20px;
-        }
-
-        .checkout-btn {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background-color: green;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-        }
-    </style>
 </head>
 
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li id="Cart"><a href="cart.html">Cart</a></li>
+                <li><a href="home.html">Home 🏠</a></li>
+                <li><a href="about.html">About Us ℹ️</a></li>
+                <li><a href="contact.html">Contact 📞</a></li>
+                <li id="Cart"><a href="cart.html">Cart 🛒</a></li>
             </ul>
         </nav>
         <div class="img_box">
-            <img src="image/logo.png" alt="logo">
+            <img src="https://plus.unsplash.com/premium_vector-1683141230533-8d0d9144f721?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="logo">
         </div>
     </header>
     <main>
         <section class="cart">
-            <h1>Your Cart</h1>
+            <h1>Your Cart 🛒</h1>
+            <p>Review your selected items before proceeding to checkout. 🛍️</p>
             <div id="cart-items">
                 <div id="cart-container"></div>
             </div>
             <div id="total-amount" class="total-amount"></div>
-            <button class="checkout-btn" onclick="checkout()">Checkout</button>
+            <button class="checkout-btn" onclick="checkout()">Proceed to Checkout 💳</button>
         </section>
     </main>
     <script>
@@ -116,8 +45,8 @@
             cart.forEach((item, index) => {
                 let itemDiv = document.createElement('div');
                 itemDiv.classList.add('cart-item');
+                itemDiv.style.backgroundImage = `url(${item.imageUrl})`;
                 itemDiv.innerHTML = `
-                    <img src="${item.imageUrl}" alt="${item.title}" class="pic">
                     <div class="title">${item.title}</div>
                     <div class="price-details">
                         <div class="msrp">MSRP: ₹${item.msrp}</div>
